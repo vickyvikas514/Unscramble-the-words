@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModel
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.android.unscramble.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -12,15 +14,17 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class GameViewModel : ViewModel() {
 
 
-    private var _score = 0
-    val score:Int
-    get()=_score
-    private var _currentWordCount = 0
-    val currentWordCount:Int
-    get()=_currentWordCount
+    private val _score = MutableLiveData(0)
 
-    private lateinit var _currentScrambledWord:String
-    val currentScrambledWord: String
+    val score:LiveData<Int>
+    get()=_score
+
+    //
+    private val _currentWordCount = MutableLiveData(0)
+    val currentWordCount: LiveData<Int>
+        get() = _currentWordCount
+    private val _currentScrambledWord= MutableLiveData<String>()
+    val currentScrambledWord: LiveData<String>
     get()= _currentScrambledWord
 
     private lateinit var currentword:String
@@ -35,8 +39,8 @@ class GameViewModel : ViewModel() {
       if (wordslist.contains(currentword)) {
           getNextWord()
       } else {
-          _currentScrambledWord = String(tempWord)
-          ++_currentWordCount
+          _currentScrambledWord.value = String(tempWord)
+          _currentWordCount.value = (_currentWordCount.value)?.inc()
           wordslist.add(currentword)
       }
 
@@ -45,15 +49,18 @@ class GameViewModel : ViewModel() {
         Log.d("GameFragment","GameViewModel created!")
         getNextWord()
     }
+
     fun nextWord():Boolean{
-    return if(currentWordCount< MAX_NO_OF_WORDS){
+    return if(_currentWordCount.value!! < MAX_NO_OF_WORDS){
         getNextWord()
         true
     } else false
 
     }
+
+
     private fun increaseScore (){
-        _score+= SCORE_INCREASE
+        _score.value= (_score.value)?.plus(SCORE_INCREASE)
     }
     fun isUserWordCorrect(playerWord:String):Boolean{
         if(playerWord.equals(currentword,true)){
@@ -63,8 +70,8 @@ class GameViewModel : ViewModel() {
         return false
     }
     fun reinitializeData(){
-        _score=0
-        _currentWordCount=0
+        _score.value=0
+        _currentWordCount.value=0
         wordslist.clear()
         getNextWord()
     }
