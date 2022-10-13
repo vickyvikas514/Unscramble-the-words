@@ -89,7 +89,7 @@ class GameFragment : Fragment() {
             setErrorTextField(false)
             if (viewModel.nextWord()){
                 //updateNextWordOnScreen()
-               // showFinalScoreDialog()
+                showFinalScoreDialog()
             }
         }else{
             setErrorTextField(true)
