@@ -87,12 +87,13 @@ class GameFragment : Fragment() {
         val playerword=binding.textInputEditText.text.toString()
         if(viewModel.isUserWordCorrect(playerword)){
             setErrorTextField(false)
-            if (viewModel.nextWord()){
+            if (!viewModel.nextWord()){
                 //updateNextWordOnScreen()
                 showFinalScoreDialog()
             }
         }else{
             setErrorTextField(true)
+
         }
 
     }
