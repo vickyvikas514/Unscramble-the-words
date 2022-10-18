@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/game_fragment">
+    <fragment
+        android:id="@+id/game_fragment"
+        android:name="com.example.android.unscramble.ui.game.GameFragment"
+        android:label="Game"
+        tools:layout="@layout/game_fragment">
+
+        <action
+            android:id="@+id/action_game_fragment_to_solution_page"
+            app:destination="@id/solution_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/solution_page"
+        android:label="Solution"
+        android:name="com.example.android.unscramble.ui.game.SolutionFragmnet"
+        tools:layout="@layout/solution">
+
+        <action
+            android:id="@+id/action_solution_page_to_game_fragment"
+            app:destination="@id/game_fragment" />
+    </fragment>
+
+
+
+</navigation>

@@ -27,4 +27,6 @@
     <string name="exit">Exit</string>
     <string name="play_again">Play Again</string>
     <string name="try_again">Try again!</string>
+    <string name="solution">SOLUTION</string>
+    <string name="correct_word">HOW DUMB YOU ARE THAT YOU CAN NOT SOLVE %s</string>
 </resources>

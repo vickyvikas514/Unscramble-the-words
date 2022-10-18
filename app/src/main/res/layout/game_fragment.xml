@@ -16,15 +16,19 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".GameFragment">
 
     <data>
         <variable
             name="gameViewModel"
             type="com.example.android.unscramble.ui.game.GameViewModel" />
-<variable
-    name="maxNoOfwords"
-    type="int" />
+        <variable
+            name="maxNoOfWords"
+            type="com.example.android.unscramble.ui.game.ListofWordsKt" />
+        <variable
+            name="gameFragment"
+            type="com.example.android.unscramble.ui.game.GameFragment" />
     </data>
 
     <ScrollView
@@ -45,6 +49,7 @@
                 android:layout_marginStart="@dimen/default_padding"
                 android:layout_marginEnd="@dimen/default_padding"
                 android:text="@string/skip"
+                android:onClick="@{() -> gameFragment.onSkipWord()}"
                 app:layout_constraintBaseline_toBaselineOf="@+id/submit"
                 app:layout_constraintEnd_toStartOf="@+id/submit"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -55,9 +60,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
                 android:text="@string/submit"
+                android:onClick="@{() -> gameFragment.onSubmitWord()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/skip"
-                app:layout_constraintTop_toBottomOf="@+id/textField" />
+                app:layout_constraintTop_toBottomOf="@+id/textField"
+                />
+            <Button
+                android:id="@+id/correctWord"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/skip"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:onClick="@{() -> gameFragment.goToNextScreen()}"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/solution"
+                />
 
             <TextView
                 android:id="@+id/textView_instructions"
@@ -76,34 +95,35 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin"
+                android:text="@{gameViewModel.currentScrambledWord}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
                 app:layout_constraintBottom_toTopOf="@+id/textView_instructions"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/word_count"
-                tools:text="@{gameViewModel.currentScrambledWord}"/>
+                tools:text="Scramble word" />
 
             <TextView
                 android:id="@+id/word_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/word_count"
+                android:text="@{@string/word_count(gameViewModel.currentWordCount, maxNoOfWords.MAX_NO_OF_WORDS)}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintBottom_toTopOf="@+id/textView_unscrambled_word"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="@{@string/word_count(gameViewModel.currentWordCount,maxNoOfwords)}" />
+                tools:text="3 of 10 words" />
 
             <TextView
                 android:id="@+id/score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score"
+                android:text="@{@string/score(gameViewModel.score)}"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="@{@string/score(gameViewModel.score)}" />
+                tools:text="Score: 20" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textField"
