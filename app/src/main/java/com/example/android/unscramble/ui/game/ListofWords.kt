@@ -27,6 +27,8 @@ val allWordsList: List<String> =
         "anecdote",
         "alphabet",
         "all",
+        "alok",
+        "ankit",
         "awesome",
         "arise",
         "balloon",
@@ -50,18 +52,18 @@ val allWordsList: List<String> =
         "colorful",
         "cookie",
         "creative",
-        "cruise",
+
         "dance",
-        "daytime",
+
         "dinosaur",
-        "doorknob",
+
         "dine",
         "dream",
         "dusk",
         "eating",
         "elephant",
         "emerald",
-        "eerie",
+
         "electric",
         "finish",
         "flowers",
@@ -77,6 +79,7 @@ val allWordsList: List<String> =
         "glass",
         "great",
         "giggle",
+        "harcourt",
         "haircut",
         "half",
         "homemade",
@@ -91,14 +94,14 @@ val allWordsList: List<String> =
         "icon",
         "introduce",
         "joke",
-        "jovial",
+
         "journal",
         "jump",
         "join",
         "kangaroo",
         "keyboard",
         "kitchen",
-        "koala",
+
         "kind",
         "kaleidoscope",
         "landscape",
@@ -136,7 +139,7 @@ val allWordsList: List<String> =
         "pack",
         "painting",
         "person",
-        "picnic",
+        "nishtha",
         "pillow",
         "pizza",
         "podcast",
@@ -148,6 +151,7 @@ val allWordsList: List<String> =
         "restaurant",
         "revolve",
         "rewind",
+        "rohan",
         "room",
         "run",
         "secret",
@@ -157,7 +161,7 @@ val allWordsList: List<String> =
         "should",
         "small",
         "spaceship",
-        "stargazing",
+
         "skill",
         "street",
         "style",
@@ -177,19 +181,22 @@ val allWordsList: List<String> =
         "uplift",
         "uniform",
         "vase",
-        "violin",
+        "vikas",
+
         "visitor",
         "vision",
         "volume",
         "view",
-        "walrus",
-        "wander",
+
+        "wonder",
         "world",
         "winter",
         "well",
-        "whirlwind",
-        "x-ray",
-        "xylophone",
+        "xylem",
+        "xenon",
+        
+
+
         "yoga",
         "yogurt",
         "yoyo",
@@ -200,4 +207,4 @@ val allWordsList: List<String> =
         "zigzag",
         "zoology",
         "zone",
-        "zeal")
+        )
